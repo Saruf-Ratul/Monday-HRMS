@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">.monday</h1>
+    <p>Web application for managing a small company - a specialized team management module.</p>
+</div>
+
+@if (User.IsInRole("User"))
+{
+    @Html.Partial("_StartedTasksPartial");
+    @Html.Partial("_EndedTasksPartial");
+}
+

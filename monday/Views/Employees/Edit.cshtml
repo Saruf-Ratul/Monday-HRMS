@@ -1,0 +1,80 @@
+﻿@model mondayWebApp.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit employee";
+}
+
+<h1>Edition</h1>
+
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EmployeeID" />
+            <input type="hidden" asp-for="EmployeeUserID" />
+            <div class="form-group">
+                <label asp-for="EmployeeEmail" class="control-label">Email addresses</label>
+                <input asp-for="EmployeeEmail" class="form-control" />
+                <span asp-validation-for="EmployeeEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeCurrentPassword" class="control-label">Old user password</label>
+                <input asp-for="EmployeeCurrentPassword" class="form-control" />
+                <span asp-validation-for="EmployeeCurrentPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeePassword" class="control-label">New user password</label>
+                <input asp-for="EmployeePassword" class="form-control" />
+                <span asp-validation-for="EmployeePassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeName" class="control-label">Name</label>
+                <input asp-for="EmployeeName" class="form-control" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeSurname" class="control-label">Last name</label>
+                <input asp-for="EmployeeSurname" class="form-control" />
+                <span asp-validation-for="EmployeeSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeDateOfBirth" class="control-label">Date of birth</label>
+                <input asp-for="EmployeeDateOfBirth" class="form-control" />
+                <span asp-validation-for="EmployeeDateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeePhoneNumber" class="control-label">Phone number</label>
+                <input asp-for="EmployeePhoneNumber" class="form-control" />
+                <span asp-validation-for="EmployeePhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRole" class="control-label">Role</label>
+                <select asp-for="EmployeeRole" class="form-control" asp-items="ViewBag.EmployeeRole"></select>
+            </div>
+            @if (Model.IsDepartmentManager == false)
+            {
+                <div class="form-group">
+                    <label asp-for="DepartmentID" class="control-label">Branch</label>
+                    <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.DepartmentID"></select>
+                </div>
+            }
+            <div class="form-group">
+                <label asp-for="ProjectID" class="control-label">Project</label>
+                <select asp-for="ProjectID" class="form-control" asp-items="ViewBag.ProjectID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Return to the employee list</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

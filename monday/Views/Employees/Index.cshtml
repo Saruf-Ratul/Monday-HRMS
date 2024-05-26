@@ -1,0 +1,54 @@
+﻿@model IEnumerable<mondayWebApp.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<h1>Employees</h1>
+
+<p>
+    <a asp-action="Create">Add a new employee</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Last name
+            </th>
+            <th>
+                Role
+            </th>
+            <th>
+                Branch
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeRole)
+                @*@foreach (var role in item.EmployeeRole) { <p>@role.Name</p> }*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EmployeeID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EmployeeID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EmployeeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

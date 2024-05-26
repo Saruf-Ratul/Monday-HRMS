@@ -1,0 +1,53 @@
+﻿@model IEnumerable<mondayWebApp.Models.ProjectTask>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tasks</h1>
+
+<p>
+    <a asp-action="Create">Add a new task</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Task name
+            </th>
+            <th>
+                Task completion time
+            </th>
+            <th>
+                In project
+            </th>
+            <th>
+                Employee
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDeadline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.EmployeeNameSurname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TaskID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TaskID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TaskID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

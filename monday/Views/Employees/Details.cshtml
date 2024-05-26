@@ -1,0 +1,60 @@
+﻿@model mondayWebApp.Models.Employee
+
+@{
+    ViewData["Title"] = "Details worker's";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+        <dt class = "col-sm-2">
+            Last name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeSurname)
+        </dd>
+        <dt class = "col-sm-2">
+            Date of birth
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeDateOfBirth)
+        </dd>
+        <dt class = "col-sm-2">
+            Phone number
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeePhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            Role
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeRole)
+        </dd>
+        <dt class = "col-sm-2">
+            Branch
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Department.DepartmentName)
+        </dd>
+        <dt class = "col-sm-2">
+            Project
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Project.ProjectName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EmployeeID">Edit</a> |
+    <a asp-action="Index">Return to the employee list</a>
+</div>

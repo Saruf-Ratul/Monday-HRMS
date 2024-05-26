@@ -1,0 +1,15 @@
+﻿@model string
+
+<h1 class="bg-success text-white">CREATE A ROLE</h1>
+<a asp-action="Index" class="btn btn-secondary">BACK</a>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="name">
+            ROLE NAME:
+        </label>
+        <input name="name" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">CREATE A ROLE</button>
+</form>

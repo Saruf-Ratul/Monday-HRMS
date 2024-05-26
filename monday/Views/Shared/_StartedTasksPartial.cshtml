@@ -1,0 +1,30 @@
+﻿@model IEnumerable<mondayWebApp.Models.ViewModels.ProjectTaskViewModel>
+
+    <h1 class="text-primary">Tasks</h1>
+    <div>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Data endings</th>
+                    <th>Created by</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (mondayWebApp.Models.ViewModels.ProjectTaskViewModel projectTask in Model)
+                {
+                    @if (projectTask.IsEnd == false)
+                    {
+                        <tr>
+                            <td><a class="btn btn-success btn-sm" asp-controller="Home" asp-action="EndTask" asp-route-id="@projectTask.TaskID">Finish the task</a></td>
+                            <td>@projectTask.TaskDeadline</td>
+                            <td>@projectTask.TaskCreatedBy</td>
+                            <td>@projectTask.TaskName</td>
+                            <td><a class="btn btn-info btn-sm">Details</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
